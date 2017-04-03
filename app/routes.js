@@ -1,6 +1,9 @@
 var slaves = require("../config/slaves.js"),
     request = require("request");
 module.exports = function(app){
+    app.get('/',function(req,res){
+        res.render('index.ejs');
+    });
     app.post("/start",function(req,res){
         var prt, slaveSRC, slavePRT, uri;
         var ip = req.body.dstIP;
@@ -30,22 +33,9 @@ module.exports = function(app){
                 }
             })
         }
-        res.json({});
-    })
-    app.get("/stop",function(req,res){
-        var slaveSRC, slavePRT;
-        console.log(slaves);
-        for(var i = 0; i < slaves.length; i++){
-            slaveSRC = slaves[i].ip;
-            slavePRT = slaves[i].prt;
-            uri = "http://" + slaveSRC + ":" + slavePRT + "/" + "stop";
-            request({
-                uri: uri,
-                method: "GET",
-            }, function(error,response,body){
-
-            })
-
-        }
-    })
+        res.redirect('/acknowledgement');
+    });
+    app.get('/acknowledgement',function(req,res){
+        res.render('acknowledgement.ejs');
+    });
 }

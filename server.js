@@ -8,10 +8,8 @@ var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
-//app.set('view engine', 'ejs');
-//console.log(__dirname);
-//app.use(express.static(__dirname + '/views/public'));
-// required for passport
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/views/public'));
 app.use(flash());
 
 
