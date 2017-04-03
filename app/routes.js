@@ -2,11 +2,12 @@ var slaves = require("../config/slaves.js"),
     request = require("request");
 module.exports = function(app){
     app.get('/',function(req,res){
+	console.log('entered');
         res.render('index.ejs');
     });
     app.post("/start",function(req,res){
         var prt, slaveSRC, slavePRT, uri;
-        var ip = req.body.dstIP;
+        var ip = req.body.ip;
         var timeForAttack = req.body.ttl;
         if(req.body.hasOwnProperty('prt')){
             prt = req.body.prt;
