@@ -1,3 +1,6 @@
+// Created By: Nicholas Gregorio and Janahan Mathanamohan
+// /config/slaves.js
+// Contains all the slaves for this head
 module.exports = {
     'slave' : [
         {
